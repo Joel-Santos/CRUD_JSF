@@ -11,6 +11,44 @@
   		<artifactId>hibernate-search-orm</artifactId>
    		<version>5.11.1.Final</version>
    	</dependency>
+   	<dependency>
+    	<groupId>org.primefaces</groupId>
+    	<artifactId>primefaces</artifactId>
+    	<version>7.0</version>
+	</dependency>
+		<!-- https://mvnrepository.com/artifact/org.omnifaces/omnifaces -->
+		<dependency>
+			<groupId>org.omnifaces</groupId>
+			<artifactId>omnifaces</artifactId>
+			<version>1.7</version>
+		</dependency>
+
+		<!-- JSF e JAVA EE -->
+		<dependency>
+			<groupId>javax</groupId>
+			<artifactId>javaee-api</artifactId>
+			<version>7.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.faces</groupId>
+			<artifactId>jsf-api</artifactId>
+			<version>2.2.2</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.faces</groupId>
+			<artifactId>jsf-impl</artifactId>
+			<version>2.2.2</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.0.1</version>
+		</dependency>
+		<!-- End JSF e JAVA EE -->
+	
+	
+	
 </dependencies>  
   
        

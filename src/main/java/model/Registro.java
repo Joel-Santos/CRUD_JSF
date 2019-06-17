@@ -23,6 +23,9 @@ public class Registro {
 	private String informacao;
 	
 	
+	public Registro() {
+		
+	}
 	public Registro(String informacao, Boolean status) {
 		super();
 		this.informacao = informacao;

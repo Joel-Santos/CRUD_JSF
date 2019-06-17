@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+    <h:head><title>LISTA FÁCIL</title></h:head> 
+    <h:body> 
+
+
+        <h:form>
+            <h:messages /> 
+           Informação: <h:inputText id="informacao" value="#{RegistroController.registro.informacao}"/> <br />
+            <h:commandButton action="#{RegistroController.salvar()}" value="Salvar" />
+            <h:commandButton value="Cancelar" />
+
+        </h:form>
+        <h:form>
+            <h:dataTable value="#{RegistroController.listaRegistros}" var="registro">
+
+                <h:column>
+                    <f:facet name="header">Título</f:facet>
+                        #{registro.informacao}
+                </h:column>
+
+                
+                <h:column>
+                    <f:facet name="header">Editar</f:facet>
+                    <h:commandButton action="#{RegistroController.editar(registro)}" value="Editar" />
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Excluir</f:facet>
+                    <h:commandButton action="#{RegistroController.remover(registro)}" value="Remover" />
+                </h:column>
+
+            </h:dataTable>
+        </h:form>
+
+    </h:body> 
+</html>
