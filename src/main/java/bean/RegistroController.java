@@ -1,29 +1,33 @@
 package bean;
 
+import java.io.Serializable;
 import java.util.List;
+
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 
-import model.*;
-import daoImp.*;
+import org.omnifaces.util.Messages;
 
-@ManagedBean
-@SessionScoped
-public class RegistroController {
+import daoImp.RegistroDaoImpl;
+import model.Registro;
 
+@ManagedBean(name="c")
+public class RegistroController implements Serializable{
+
+	private static final long serialVersionUID = -2596942688238440151L;
+	
 	private Registro registro;
 	private List<Registro> listaRegistros;
 	
 	
 	
-	
 	public RegistroController() {
-		super();
 		this.registro = new Registro();
-		RegistroDao registrodao = new RegistroDaoImplements();
-		this.setListaRegistros(registrodao.list());
+		RegistroDaoImpl registrodao = new RegistroDaoImpl();
 	}
+	
 	public Registro getRegistro() {
 		return registro;
 	}
@@ -31,9 +35,10 @@ public class RegistroController {
 		this.registro = registro;
 	}
 	
+
 	public List<Registro> getListaRegistros() {
-		RegistroDao registrodao = new RegistroDaoImplements();
-        this.listaRegistros = registrodao.list();
+		RegistroDaoImpl registrodao = new RegistroDaoImpl();
+        this.listaRegistros = registrodao.listAll();
 		return listaRegistros;
 	}
 	public void setListaRegistros(List<Registro> listaRegistros) {
@@ -42,11 +47,10 @@ public class RegistroController {
     
 
 	public void salvar(){
-    	RegistroDao registrodao = new RegistroDaoImplements();
-    	
-    	registrodao.update(this.registro);
-    	
+		RegistroDaoImpl registrodao = new RegistroDaoImpl();
+    	registrodao.save(this.registro);
     	this.registro = new Registro();
+    	Messages.addGlobalInfo("Cadastro realizado com sucesso");//Mensagem de confirmação;
     }
 	
 	public void editar(Registro registro){
@@ -56,12 +60,14 @@ public class RegistroController {
 	 }
 	 
 	 public void remover(Registro registro){
-	        RegistroDao registrodao = new RegistroDaoImplements();
+		 RegistroDaoImpl registrodao = new RegistroDaoImpl();
 	        registro.setStatus(false);
-	        registrodao.update(registro);    
+	        registrodao.save(registro);    
 	 }
 	
-	
+	public static long getSerialversionuid() {
+			return serialVersionUID;
+	}
 	
 
 }

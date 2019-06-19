@@ -1,41 +1,53 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html"> 
-
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	
     <h:head><title>LISTA FÁCIL</title></h:head> 
     <h:body> 
+		<p:layout style="min-width:400px;min-height:200px;">
+		 
+		    <p:layoutUnit position="center">
+		       
+		       
+		    	<h:form>
+        				<h:messages /> 
+				    	Informação: <h:inputText id ="informacao" value="#{c.registro.informacao}" required="true" requiredMessage="Digite algum texto!"/> <br />
+				 	    <h:commandButton action="#{c.salvar()}" value="Salvar" />
+				        <h:commandButton value="Cancelar" />
+		        </h:form>
+		        
+		  	</p:layoutUnit>
+		</p:layout>
+        		
+	    		<h:form>
+	        			<h:dataTable value="#{c.listaRegistros}" var="registro">
+	
+	               			<h:column>
+	        			        <f:facet name="header">Informação</f:facet>
+	                    			#{registro.informacao}
+	            			</h:column>
+	
+	            
+	            			<h:column>
+	                			<f:facet name="header">Editar</f:facet>
+	                				<h:commandButton action="#{c.editar(registro)}" value="Editar" />
+	            			</h:column>
+	
+	            			<h:column>
+	                			<f:facet name="header">Excluir</f:facet>
+	               					 <h:commandButton action="#{c.remover(registro)}" value="Remover" />
+	            			</h:column>
+	
+	       				 </h:dataTable>
+	    			
+	    			</h:form>
+	     
+		       
+		   
 
-
-        <h:form>
-            <h:messages /> 
-           Informação: <h:inputText id="informacao" value="#{RegistroController.registro.informacao}"/> <br />
-            <h:commandButton action="#{RegistroController.salvar()}" value="Salvar" />
-            <h:commandButton value="Cancelar" />
-
-        </h:form>
-        <h:form>
-            <h:dataTable value="#{RegistroController.listaRegistros}" var="registro">
-
-                <h:column>
-                    <f:facet name="header">Título</f:facet>
-                        #{registro.informacao}
-                </h:column>
-
-                
-                <h:column>
-                    <f:facet name="header">Editar</f:facet>
-                    <h:commandButton action="#{RegistroController.editar(registro)}" value="Editar" />
-                </h:column>
-
-                <h:column>
-                    <f:facet name="header">Excluir</f:facet>
-                    <h:commandButton action="#{RegistroController.remover(registro)}" value="Remover" />
-                </h:column>
-
-            </h:dataTable>
-        </h:form>
-
+        
     </h:body> 
 </html>

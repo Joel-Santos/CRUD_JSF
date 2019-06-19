@@ -19,17 +19,20 @@ public class Registro {
 	
 	
 	
-	@Column(name ="descricao", nullable = false)
+	@Column(name ="descricao")
 	private String informacao;
 	
 	
 	public Registro() {
-		
+	 super();
+	 this.status = true;
+	 
 	}
+	
 	public Registro(String informacao, Boolean status) {
 		super();
 		this.informacao = informacao;
-		this.status = status;
+		this.status = true;
 	}
 
 	
@@ -57,5 +60,11 @@ public class Registro {
 		this.status = status;
 	}
 	
-
+	
+	@Override
+	public String toString() {
+		return "Registro [idInformacao=" + idInformacao + ", informacao=" + informacao + ", status=" + status + "]";
+	}
+	
+	
 }
